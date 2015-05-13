@@ -32,12 +32,12 @@ end
 delete '/edit' do # Why don't I need to add :id here?
   note = Journal.find(params[:id])
   note.delete
-  redirect '/' #What's the difference between this and erb :index
+  redirect '/home' #What's the difference between this and erb :index
 end
 
 # Came from new post, creating it
 post '/new' do
-  Journal.create(content: params[:content])
+  Journal.create(content: params[:content], user_id: current_user.id)
   redirect '/home'
 end
 
