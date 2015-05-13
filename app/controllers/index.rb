@@ -5,6 +5,12 @@ get '/' do
   erb :index
 end
 
+get '/home' do
+  @users = User.all
+  @notes = Note.all
+  erb :home
+end
+
 # New entry
 get '/new' do
   erb :new
@@ -21,7 +27,7 @@ put '/edit' do
   note = Note.find(params[:id])
   note.content = params[:content]
   note.save
-  redirect '/'
+  redirect '/home'
 end
 
 delete '/edit' do # Why don't I need to add :id here?
@@ -33,6 +39,6 @@ end
 # Came from new post, creating it
 post '/new' do
   Note.create(content: params[:content])
-  redirect '/'
+  redirect '/home'
 end
 

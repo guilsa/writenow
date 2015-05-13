@@ -24,10 +24,10 @@ post '/login' do
   user = User.find_by(email: params[:email])
   if user && user.password == params[:password]
     login(user)
-    redirect to('/')
+    redirect to('/home')
   else
     @login_failed = true
-    erb :signin
+    erb :login
   end
 end
 
