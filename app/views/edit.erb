@@ -1,0 +1,9 @@
+<div class="error"></div>
+<form action="/edit" method="post">
+  <input type="hidden" name="id" value="<%=@post.id%>">
+  <input type="hidden" name="_method" value="put">
+  <input type="submit" value="Save">
+  <input type="submit" name="_method" value="Delete">
+  <br>
+  <textarea autofocus name="content" rows="30" cols="120"><%=@post.content%></textarea>
+</form>

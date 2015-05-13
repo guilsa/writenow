@@ -1,0 +1,11 @@
+<div class="container">
+
+<a href="/new"><input type="button" value="New post"></a>
+
+<ul>Here are your notes:
+  <% @notes.each do |note| %>
+    <li><a href="/post/<%= note.id %>"><%= note.content %></a></li>
+  <% end %>
+</ul>
+
+</div>
