@@ -1,0 +1,6 @@
+<div class="container">
+  <% if current_user %>
+  <p>Welcome <%= @users.find(current_user.id).first_name%></p>
+  <% end %>
+
+</div>
