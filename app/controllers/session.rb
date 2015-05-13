@@ -1,23 +1,25 @@
+enable :sessions
+
 # User goes to Sign up form
-get '/users/new' do
-  erb :sign_up
+get '/signup' do
+  erb :signup
 end
 
 # User comes from Sign up form
-post '/users' do
+post '/signup' do
   User.create(first_name: params[:user]["firstname"],
               last_name: params[:user]["lastname"],
               email: params[:user]["email"],
               password: params[:user]["password"])
-  erb :sign_in
+  erb :login
 end
 
-get '/sessions/new' do
+get '/login' do
   # render sign-in page
-  erb :sign_in
+  erb :login
 end
 
-post '/sessions' do
+post '/login' do
   # sign-in
   user = User.find_by(email: params[:email])
   if user && user.password == params[:password]
@@ -25,12 +27,12 @@ post '/sessions' do
     redirect to('/')
   else
     @login_failed = true
-    erb :sign_in
+    erb :signin
   end
 end
 
-delete '/sessions' do
+delete '/logout' do
   # sign-out -- invoked
   logout!
-  erb :index
+  redirect '/'
 end

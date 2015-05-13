@@ -1,9 +1,6 @@
 <div class="container">
-
   <% if current_user %>
-    <p>Hi <%= @users.find(current_user.id).name%></p>
-  <% else %>
-    <p>Login</p>
+  <p>Welcome <%= @users.find(current_user.id).first_name%></p>
   <% end %>
 
 </div>

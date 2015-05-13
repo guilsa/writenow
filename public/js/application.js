@@ -4,4 +4,22 @@ $(document).ready(function() {
   // when we try to bind to them
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $("#logout").click(function(event){
+    event.preventDefault();
+  });
+
 });
+
+
+function logout(){
+
+  $.ajax({
+    type: "DELETE",
+    url: "/logout/",
+    data: id,
+    success: function(id){
+
+      $( "#" + id ).remove();
+    }
+  });
+}

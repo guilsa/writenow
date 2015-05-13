@@ -16,6 +16,8 @@ gem 'activerecord', '~>4.1'
 
 gem 'rake'
 
+gem 'bcrypt-ruby'
+
 gem 'shotgun'
 
 group :test do
@@ -27,4 +29,6 @@ group :test, :development do
   gem 'rspec'
   gem 'factory_girl'
   gem 'faker'
+  gem 'hirb'
+  gem 'pry', '~> 0.10.1'
 end

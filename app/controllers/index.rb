@@ -1,5 +1,6 @@
 # Home
 get '/' do
+  @users = User.all
   @notes = Note.all
   erb :index
 end
