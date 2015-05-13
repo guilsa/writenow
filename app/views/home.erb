@@ -3,8 +3,8 @@
 <a href="/new"><input type="button" value="New post"></a>
 
 <ul>Here are your notes:
-  <% @notes.each do |note| %>
-    <li><a href="/post/<%= note.id %>"><%= note.content %></a></li>
+  <% @user.journals.each do |journal| %>
+    <li><a href="/post/<%= journal.id %>"><%= journal.content %></a></li>
   <% end %>
 </ul>
 

@@ -1,6 +1,6 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
-  has_many :notes
+  has_many :journals
 
   def password
     @password ||= BCrypt::Password.new(password_hash)
