@@ -1,13 +1,13 @@
 # Home
 get '/' do
   @users = User.all
-  @notes = Note.all
+  @journals = Journal.all
   erb :index
 end
 
 get '/home' do
   @users = User.all
-  @notes = Note.all
+  @journals = Journal.all
   erb :home
 end
 
@@ -18,27 +18,27 @@ end
 
 # Clicked on a post to edit
 get '/post/:id' do
-  @post = Note.find(params[:id])
+  @journal = Journal.find(params[:id])
   erb :edit
 end
 
 # Edited a post, saving it
 put '/edit' do
-  note = Note.find(params[:id])
+  note = Journal.find(params[:id])
   note.content = params[:content]
   note.save
   redirect '/home'
 end
 
 delete '/edit' do # Why don't I need to add :id here?
-  note = Note.find(params[:id])
+  note = Journal.find(params[:id])
   note.delete
   redirect '/' #What's the difference between this and erb :index
 end
 
 # Came from new post, creating it
 post '/new' do
-  Note.create(content: params[:content])
+  Journal.create(content: params[:content])
   redirect '/home'
 end
 
