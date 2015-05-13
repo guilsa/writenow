@@ -7,8 +7,13 @@
   <input type="submit" name="_method" value="Delete">
   <br>
   <div class="timestamp">Tuesday, May 12, 2015</div>
-  <textarea autofocus name="content" rows="30" cols="100"><%=@journal.content%></textarea>
+  <textarea autofocus class="content" name="content" rows="30" cols="100"><%=@journal.content%></textarea>
 </form>
+
+  <div id="result">
+      Words: <span id="wordCount">0</span><br/>
+  </div>
+
 </div>
 
 

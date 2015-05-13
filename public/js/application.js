@@ -4,6 +4,13 @@ $(document).ready(function() {
     $('.timestamp').text(getTimestamp);
   }
 
+  $("textarea").on("input", function(){
+    wordCount(event);
+  })
+
+  // $('#text').change(counter);
+  // $('#text').keydown(counter);
+
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   $("#logout").click(function(event){
     event.preventDefault();
@@ -22,3 +29,36 @@ function getTimestamp() {
   var year = d.getFullYear();
   return weekday + ", " + month + " " + day + ", " + year;
 }
+
+// Source: http://jsfiddle.net/deepumohanp/jZeKu/
+function wordCount(event) {
+    var value = $(event.target).val();
+
+    if (value.length == 0) {
+        $('#wordCount').html(0);
+        // $('#totalChars').html(0);
+        // $('#charCount').html(0);
+        // $('#charCountNoSpace').html(0);
+        return;
+    }
+
+    var regex = /\s+/gi;
+    var wordCount = value.trim().replace(regex, ' ').split(' ').length;
+    var totalChars = value.length;
+    var charCount = value.trim().length;
+    var charCountNoSpace = value.replace(regex, '').length;
+
+    $('#wordCount').html(wordCount);
+    // $('#totalChars').html(totalChars);
+    // $('#charCount').html(charCount);
+    // $('#charCountNoSpace').html(charCountNoSpace);
+};
+
+// $(document).ready(function() {
+//     // $('#count').click(counter);
+
+//     // $('#text').keypress(counter);
+//     // $('#text').keyup(counter);
+//     // $('#text').blur(counter);
+//     // $('#text').focus(counter);
+// });
