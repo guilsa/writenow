@@ -9,5 +9,7 @@ User.create(first_name: "Maria",
             password: "foobar")
 
 Journal.create(content: "this is by Gui", user_id: 1)
+Journal.create(content: "this is Gui's second journal", user_id: 1)
 Journal.create(content: "this is by Maria", user_id: 2)
+Journal.create(content: "this is Maria's second journal", user_id: 2)
 

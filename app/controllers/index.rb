@@ -6,8 +6,7 @@ get '/' do
 end
 
 get '/home' do
-  @users = User.all
-  @journals = Journal.all
+  @user = User.find(current_user.id)
   erb :home
 end
 
