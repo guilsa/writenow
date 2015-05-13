@@ -1,3 +1,4 @@
+<div class="container">
 <div class="error"></div>
 <form action="/edit" method="post">
   <input type="hidden" name="id" value="<%=@journal.id%>">
@@ -5,5 +6,9 @@
   <input type="submit" value="Save">
   <input type="submit" name="_method" value="Delete">
   <br>
-  <textarea autofocus name="content" rows="30" cols="120"><%=@journal.content%></textarea>
+  <div class="timestamp">Tuesday, May 12, 2015</div>
+  <textarea autofocus name="content" rows="30" cols="100"><%=@journal.content%></textarea>
 </form>
+</div>
+
+

@@ -1,7 +1,8 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+
+  if ($('.timestamp').length) {
+    $('.timestamp').text(getTimestamp);
+  }
 
   // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   $("#logout").click(function(event){
@@ -10,16 +11,14 @@ $(document).ready(function() {
 
 });
 
-
-function logout(){
-
-  $.ajax({
-    type: "DELETE",
-    url: "/logout/",
-    data: id,
-    success: function(id){
-
-      $( "#" + id ).remove();
-    }
-  });
+function getTimestamp() {
+  var d = new Date();
+  var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  var weekday = days[d.getDay()];
+  var day = d.getDate();
+  var months = ["January","February","March","April","May","June","July",
+                "August", "September","October","November","December"];
+  var month = months[d.getMonth()];
+  var year = d.getFullYear();
+  return weekday + ", " + month + " " + day + ", " + year;
 }
