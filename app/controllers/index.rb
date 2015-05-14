@@ -5,9 +5,9 @@ get '/' do
   erb :index
 end
 
-get '/home' do
+get '/dashboard' do
   @user = User.find(current_user.id)
-  erb :home
+  erb :dashboard
 end
 
 # New entry
@@ -26,18 +26,18 @@ put '/edit' do
   note = Journal.find(params[:id])
   note.content = params[:content]
   note.save
-  redirect '/home'
+  redirect '/dashboard'
 end
 
 delete '/edit' do # Why don't I need to add :id here?
   note = Journal.find(params[:id])
   note.delete
-  redirect '/home' #What's the difference between this and erb :index
+  redirect '/dashboard' #What's the difference between this and erb :index
 end
 
 # Came from new post, creating it
 post '/new' do
   Journal.create(content: params[:content], user_id: current_user.id)
-  redirect '/home'
+  redirect '/dashboard'
 end
 

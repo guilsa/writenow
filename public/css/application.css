@@ -1,3 +1,18 @@
+.streak {
+  width: 30px;
+  height: 30px;
+  border: 3px solid black;
+  display: inline-block;
+  position: relative;
+}
+
+.glyphicon {
+  font-size: 18px;
+  color: green;
+  position: absolute;
+  margin: auto;
+}
+
 .container {
   margin: 20px auto;
   width: 800px;

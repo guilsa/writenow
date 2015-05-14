@@ -2,7 +2,11 @@
 
 <a href="/new"><input type="button" value="New post"></a>
 
-<ul>Here are your notes:
+<h2>Writing streak:</h2>
+  <%= erb :'_streak', { layout: false} %>
+
+<h2>Journals:</h2>
+<ul>
   <% @user.journals.each do |journal| %>
     <li><a href="/post/<%= journal.id %>"><%= journal.content %></a></li>
   <% end %>
