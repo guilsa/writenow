@@ -37,11 +37,12 @@ function eventBindings(){
 
 
 function renderStreaks(){
+
   var d = new Date();
   var totalDays = numberOfDays(d.getFullYear(), d.getMonth());
-  var streakBox = ' <div class="streak"></div> ';
-  for (var i = 0; i < totalDays; i++) {
-    $( '#streak' ).append( streakBox );
+  var glyphiconHTML = '<span class="glyphicon glyphicon-ok"></span>';
+  for (var i = 1; i < totalDays; i++) {
+    $( '#streak' ).append( $('<div class="streak"></div>').attr('id',i) );
   };
 }
 
