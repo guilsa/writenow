@@ -39,9 +39,12 @@ function eventBindings(){
 function addStreakAjax(){
   $.ajax({
     type: "GET",
-    url: "/streak"
+    url: "/streak",
+    success: function(data){
+      debugger
+      // buildTodoElement(data);
+    }
   });
-  debugger
 };
 
 function renderStreaks(){

@@ -7,7 +7,7 @@ class CreateJournals < ActiveRecord::Migration
 
       t.belongs_to :user
 
-      t.timestamp
+      t.timestamps
     end
   end
 end
