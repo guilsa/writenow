@@ -8,10 +8,6 @@ $(document).ready(function() {
     wordCount(event);
   })
 
-  // $('#text').change(counter);
-  // $('#text').keydown(counter);
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
   $("#logout").click(function(event){
     event.preventDefault();
   });
@@ -36,9 +32,6 @@ function wordCount(event) {
 
     if (value.length == 0) {
         $('#wordCount').html(0);
-        // $('#totalChars').html(0);
-        // $('#charCount').html(0);
-        // $('#charCountNoSpace').html(0);
         return;
     }
 
@@ -49,16 +42,4 @@ function wordCount(event) {
     var charCountNoSpace = value.replace(regex, '').length;
 
     $('#wordCount').html(wordCount);
-    // $('#totalChars').html(totalChars);
-    // $('#charCount').html(charCount);
-    // $('#charCountNoSpace').html(charCountNoSpace);
 };
-
-// $(document).ready(function() {
-//     // $('#count').click(counter);
-
-//     // $('#text').keypress(counter);
-//     // $('#text').keyup(counter);
-//     // $('#text').blur(counter);
-//     // $('#text').focus(counter);
-// });
