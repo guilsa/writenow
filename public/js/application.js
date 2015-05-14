@@ -10,8 +10,8 @@ function eventBindings(){
   // Run renderStreaks if element id .streak loads
   if ( $( '.streak-box' ).length ) {
     renderStreaks();
+    addStreakAjax();
   };
-
 
   // Render date field if .timestamp element loads
   if ($( '.timestamp' ).length) {
@@ -36,6 +36,14 @@ function eventBindings(){
 };
 
 
+function addStreakAjax(){
+  $.ajax({
+    type: "GET",
+    url: "/streak"
+  });
+  debugger
+};
+
 function renderStreaks(){
 
   var d = new Date();
@@ -44,7 +52,6 @@ function renderStreaks(){
   for (var i = 1; i < totalDays; i++) {
     $( '.streak-box' ).append( $( '<div class="streak"></div>' ).attr( 'id', 'day-' + i) );
     // Box should have a glyphicon if that day goal is set to true
-
   };
 
 

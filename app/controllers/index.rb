@@ -41,3 +41,12 @@ post '/new' do
   redirect '/dashboard'
 end
 
+get '/streak' do
+
+  current_user = User.find(1)
+  current_user_journals = current_user.journals.as_json
+  content_type :json
+  {journals: current_user_journals}
+
+end
+
