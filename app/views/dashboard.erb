@@ -5,7 +5,6 @@
 <h2>Writing streak:</h2>
   Your writing streak helps visualize the days you were able to write consecutively. If you miss a day you should see a blank box and if you write for 4 days straight, each day should be marked in green.
   <%= erb :'_streak', { layout: false} %>
-  <div class="streak"></div>
 <h2>Journals:</h2>
 <ul>
   <% @user.journals.each do |journal| %>

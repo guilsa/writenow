@@ -1,30 +1,36 @@
 $(document).ready(function() {
 
-  eventBinding();
-  renderStreaks();
+  eventBindings();
 
 });
 
-function eventBinding(){
+
+function eventBindings(){
+
+  // Run renderStreaks if element id .streak loads
+  if ( $( '#streak' ).length ) {
+    renderStreaks();
+  };
+
 
   // Render date field if .timestamp element loads
-  if ($('.timestamp').length) {
-    $('.timestamp').text(getTimestamp);
+  if ($( '.timestamp' ).length) {
+    $( '.timestamp' ).text(getTimestamp);
   };
 
   // Run wordCount as textarea input changes
-  $('textarea[name="content"]').on("input", function(){
+  $( 'textarea[name="content"]' ).on( "input" , function(){
     var value = $(event.target).val();
     wordCount(value);
   });
 
   // Run wordCount if textarea loads
-  $('textarea[name="content"]').load(function(){
-    var $event = $('textarea[name="content"]');
+  $( 'textarea[name="content"]' ).load(function(){
+    var $event = $( 'textarea[name="content"]' );
     wordCount($event.val());
   });
 
-  $("#logout").click(function(){
+  $( "#logout" ).click(function(){
     event.preventDefault();
   });
 };
@@ -33,8 +39,10 @@ function eventBinding(){
 function renderStreaks(){
   var d = new Date();
   var totalDays = numberOfDays(d.getFullYear(), d.getMonth());
-
-  $('')
+  var streakBox = ' <div class="streak"></div> ';
+  for (var i = 0; i < totalDays; i++) {
+    $( '#streak' ).append( streakBox );
+  };
 }
 
 function numberOfDays(year, month) {
@@ -59,7 +67,7 @@ function getTimestamp() {
 function wordCount(value) {
     console.log("word count has run")
     if (value.length == 0) {
-        $('#wordCount').html(0);
+        $( '#wordCount' ).html(0);
         return;
     }
 
@@ -69,5 +77,5 @@ function wordCount(value) {
     var charCount = value.trim().length;
     var charCountNoSpace = value.replace(regex, '').length;
 
-    $('#wordCount').html(wordCount);
+    $( '#wordCount' ).html(wordCount);
 };
