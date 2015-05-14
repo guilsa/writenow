@@ -42,8 +42,9 @@ function renderStreaks(){
   var totalDays = numberOfDays(d.getFullYear(), d.getMonth());
   var glyphiconHTML = '<span class="glyphicon glyphicon-ok"></span>';
   for (var i = 1; i < totalDays; i++) {
-    // padding still not working, google: "jquery refresh css after append"
     $( '.streak-box' ).append( $( '<div class="streak"></div>' ).attr( 'id', 'day-' + i) );
+    // Box should have a glyphicon if that day goal is set to true
+
   };
 
 
