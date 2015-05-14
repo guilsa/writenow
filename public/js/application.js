@@ -4,11 +4,19 @@ $(document).ready(function() {
     $('.timestamp').text(getTimestamp);
   }
 
-  $("textarea").on("input", function(){
-    wordCount(event);
+  $('textarea[name="content"]').on("input", function(){
+    var value = $(event.target).val();
+    wordCount(value);
   })
 
-  $("#logout").click(function(event){
+  $('textarea[name="content"]').ready(function(){
+    var $event = $('textarea[name="content"]')
+    wordCount($event.val());
+  });
+
+
+
+  $("#logout").click(function(){
     event.preventDefault();
   });
 
@@ -27,8 +35,8 @@ function getTimestamp() {
 }
 
 // Source: http://jsfiddle.net/deepumohanp/jZeKu/
-function wordCount(event) {
-    var value = $(event.target).val();
+function wordCount(value) {
+
 
     if (value.length == 0) {
         $('#wordCount').html(0);
