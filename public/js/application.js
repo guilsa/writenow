@@ -8,7 +8,7 @@ $(document).ready(function() {
 function eventBindings(){
 
   // Run renderStreaks if element id .streak loads
-  if ( $( '#streak' ).length ) {
+  if ( $( '.streak-box' ).length ) {
     renderStreaks();
   };
 
@@ -42,8 +42,11 @@ function renderStreaks(){
   var totalDays = numberOfDays(d.getFullYear(), d.getMonth());
   var glyphiconHTML = '<span class="glyphicon glyphicon-ok"></span>';
   for (var i = 1; i < totalDays; i++) {
-    $( '#streak' ).append( $('<div class="streak"></div>').attr('id',i) );
+    // padding still not working, google: "jquery refresh css after append"
+    $( '.streak-box' ).append( $( '<div class="streak"></div>' ).attr( 'id', 'day-' + i) );
   };
+
+
 }
 
 function numberOfDays(year, month) {
