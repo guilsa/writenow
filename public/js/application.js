@@ -1,26 +1,47 @@
 $(document).ready(function() {
 
+  eventBinding();
+  renderStreaks();
+
+});
+
+function eventBinding(){
+
+  // Render date field if .timestamp element loads
   if ($('.timestamp').length) {
     $('.timestamp').text(getTimestamp);
-  }
+  };
 
+  // Run wordCount as textarea input changes
   $('textarea[name="content"]').on("input", function(){
     var value = $(event.target).val();
     wordCount(value);
-  })
-
-  $('textarea[name="content"]').ready(function(){
-    var $event = $('textarea[name="content"]')
-    wordCount($event.val());
   });
 
-
+  // Run wordCount if textarea loads
+  $('textarea[name="content"]').load(function(){
+    var $event = $('textarea[name="content"]');
+    wordCount($event.val());
+  });
 
   $("#logout").click(function(){
     event.preventDefault();
   });
+};
 
-});
+
+function renderStreaks(){
+  var d = new Date();
+  var totalDays = numberOfDays(d.getFullYear(), d.getMonth());
+
+  $('')
+}
+
+function numberOfDays(year, month) {
+    var d = new Date(year, month, 0);
+    return d.getDate();
+};
+
 
 function getTimestamp() {
   var d = new Date();
@@ -36,8 +57,7 @@ function getTimestamp() {
 
 // Source: http://jsfiddle.net/deepumohanp/jZeKu/
 function wordCount(value) {
-
-
+    console.log("word count has run")
     if (value.length == 0) {
         $('#wordCount').html(0);
         return;
