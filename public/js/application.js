@@ -10,16 +10,16 @@ function eventBindings(){
   // Run renderStreaks if element id .streak loads
   $( '.streak-box' ).load(function(){
     renderStreaks();
-    addStreakAjax();
+    addStreaks();
   });
 
-  // Render date field if .timestamp element loads
-  // Run wordCount on textarea
   if ($( '.timestamp' ).length) {
+    // Render date field if .timestamp element loads
     $( '.timestamp' ).text(getTimestamp);
-
+    // Run wordCount on textarea
     var $event = $( 'textarea[name="content"]' );
     wordCount($event.val());
+    autoSave();
   };
 
   // Run wordCount as textarea input changes
@@ -33,8 +33,27 @@ function eventBindings(){
   });
 };
 
+function autoSave(){
+  window.setInterval(function(){
+    saveWordCount();
+    saveDocument();
+  }, 10000);
+};
 
-function addStreakAjax(){
+function saveWordCount(){
+  var count = $( '#wordCount' ).html();
+  $.ajax({
+    type: "PUT",
+    url: "/wordcount",
+    success: function(){
+      debugger;
+    }
+  });
+};
+
+}
+
+function addStreaks(){
   $.ajax({
     type: "GET",
     url: "/streak",
