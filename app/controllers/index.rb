@@ -6,9 +6,12 @@ get '/' do
 end
 
 get '/dashboard' do
-  @user = User.find(current_user.id)
-  erb :dashboard
-  binding.pry
+  if current_user
+    @user = User.find(current_user.id)
+    erb :dashboard
+  else
+    redirect '/login'
+  end
 end
 
 # New entry
@@ -53,7 +56,6 @@ end
 
 # Clicked on a post to edit
 get '/:id' do
-  binding.pry
   @journal = Journal.find_by(day: params[:id])
   erb :edit
 end

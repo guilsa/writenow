@@ -11,7 +11,7 @@ post '/signup' do
               last_name: params[:user]["lastname"],
               email: params[:user]["email"],
               password: params[:user]["password"])
-  erb :login
+  redirect to('/login')
 end
 
 get '/login' do
@@ -24,8 +24,8 @@ post '/login' do
   @user = User.find_by(email: params[:email])
   if @user && @user.password == params[:password]
     login(@user)
-    # redirect to('/dashboard')
-    erb :dashboard
+    redirect to('/dashboard')
+    # erb :dashboard
   else
     @login_failed = true
     erb :login
@@ -35,5 +35,5 @@ end
 delete '/logout' do
   # sign-out -- invoked
   logout!
-  redirect '/'
+  redirect '/login'
 end
