@@ -1,9 +1,14 @@
+.streak-box {
+  padding: 10px;
+}
+
 .streak {
   width: 30px;
   height: 30px;
   border: 3px solid black;
   display: inline-block;
   position: relative;
+  margin-left: 5px;
 }
 
 .glyphicon {
@@ -22,7 +27,6 @@
 
 .container h1 {
   font-size: 17pt;
-
 }
 
 .timestamp {
