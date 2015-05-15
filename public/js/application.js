@@ -8,26 +8,24 @@ $(document).ready(function() {
 function eventBindings(){
 
   // Run renderStreaks if element id .streak loads
-  if ( $( '.streak-box' ).length ) {
+  $( '.streak-box' ).load(function(){
     renderStreaks();
     addStreakAjax();
-  };
+  });
 
   // Render date field if .timestamp element loads
+  // Run wordCount on textarea
   if ($( '.timestamp' ).length) {
     $( '.timestamp' ).text(getTimestamp);
+
+    var $event = $( 'textarea[name="content"]' );
+    wordCount($event.val());
   };
 
   // Run wordCount as textarea input changes
   $( 'textarea[name="content"]' ).on( "input" , function(){
     var value = $(event.target).val();
     wordCount(value);
-  });
-
-  // Run wordCount if textarea loads
-  $( 'textarea[name="content"]' ).load(function(){
-    var $event = $( 'textarea[name="content"]' );
-    wordCount($event.val());
   });
 
   $( "#logout" ).click(function(){
@@ -41,7 +39,7 @@ function addStreakAjax(){
     type: "GET",
     url: "/streak",
     success: function(data){
-      debugger
+      debugger;
       // buildTodoElement(data);
     }
   });
@@ -80,8 +78,7 @@ function getTimestamp() {
 
 // Source: http://jsfiddle.net/deepumohanp/jZeKu/
 function wordCount(value) {
-    console.log("word count has run")
-    if (value.length == 0) {
+    if (value.length === 0) {
         $( '#wordCount' ).html(0);
         return;
     }

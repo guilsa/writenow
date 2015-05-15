@@ -22,22 +22,18 @@ User.create(first_name: "Elaine",
 
 Journal.create(day: "2015-05-01",
                content: FFaker::Lorem.sentence(49),
-               word_count: 49,
                user_id: 1)
 
 Journal.create(day: "2015-05-02",
                content: FFaker::Lorem.sentence(48),
-               word_count: 48,
                user_id: 1)
 
 Journal.create(day: "2015-05-03",
                content: FFaker::Lorem.sentence(50),
-               word_count: 50,
                user_id: 1)
 
 Journal.create(day: "2015-05-04",
                content: FFaker::Lorem.sentence(51),
-               word_count: 51,
                user_id: 1)
 
 
