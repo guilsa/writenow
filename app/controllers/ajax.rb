@@ -22,6 +22,8 @@ end
 get '/wordcount' do
 
   if request.xhr?
+    current_user = User.find(1)
+    current_user.jowordcount
 
   end
 

@@ -42,16 +42,17 @@ function autoSave(){
 
 function saveWordCount(){
   var count = $( '#wordCount' ).html();
-  $.ajax({
-    type: "PUT",
-    url: "/wordcount",
-    success: function(){
-      debugger;
-    }
-  });
-};
+  var id = window.location.pathname.slice(1, 0);
 
-}
+  // $.ajax({
+  //   type: "PUT",
+  //   url: "/wordcount",
+  //   data: {id: , wordCount: count}
+  //   success: function(){
+  //     debugger;
+  //   }
+  // });
+};
 
 function addStreaks(){
   $.ajax({
