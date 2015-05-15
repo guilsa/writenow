@@ -28,3 +28,13 @@ get '/wordcount' do
   end
 
 end
+
+put '/:day' do
+  if request.xhr?
+    journal = Journal.find_by(day: params[:day])
+    journal.content = params[:content]
+    journal.word_count = params[:wordcount]
+    journal.save
+  end
+
+end

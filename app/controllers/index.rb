@@ -19,9 +19,10 @@ get '/new' do
   erb :new
 end
 
+#### TEMPORARY SHOULD REMOVE SOON
 # Edited a post, saving it
 put '/edit' do
-  journal = Journal.find_by(day: params[:id])
+  journal = Journal.find_by(____)
   journal.content = params[:content]
   journal.save
   redirect '/dashboard'
@@ -55,8 +56,8 @@ get '/streak' do
 end
 
 # Clicked on a post to edit
-get '/:id' do
-  @journal = Journal.find_by(day: params[:id])
+get '/:day' do
+  @journal = Journal.find_by(day: params[:day])
   erb :edit
 end
 
