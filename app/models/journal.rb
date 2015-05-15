@@ -12,6 +12,4 @@ class Journal < ActiveRecord::Base
     self.goal = true if self.word_count > 50
   end
 
-
-
 end

@@ -8,7 +8,7 @@
 <h2>Journals:</h2>
 <ul>
   <% @user.journals.each do |journal| %>
-    <li><a href="/day/<%= journal.day %>"><%= journal.day %></a></li>
+    <li><a href="/<%= journal.day %>"><%= journal.day %> - <%= journal.goal %></a></li>
   <% end %>
 </ul>
 

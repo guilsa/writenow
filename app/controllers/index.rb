@@ -16,22 +16,23 @@ get '/new' do
 end
 
 # Clicked on a post to edit
-get '/day/:id' do
-  @journal = Journal.find(params[:id])
+get '/:id' do
+  binding.pry
+  @journal = Journal.find_by(day: params[:id])
   erb :edit
 end
 
 # Edited a post, saving it
 put '/edit' do
-  note = Journal.find(params[:id])
-  note.content = params[:content]
-  note.save
+  journal = Journal.find(params[:id])
+  journal.content = params[:content]
+  journal.save
   redirect '/dashboard'
 end
 
 delete '/edit' do # Why don't I need to add :id here?
-  note = Journal.find(params[:id])
-  note.delete
+  journal = Journal.find(params[:id])
+  journal.delete
   redirect '/dashboard' #What's the difference between this and erb :index
 end
 
