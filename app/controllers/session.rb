@@ -21,10 +21,11 @@ end
 
 post '/login' do
   # sign-in
-  user = User.find_by(email: params[:email])
-  if user && user.password == params[:password]
-    login(user)
-    redirect to('/dashboard')
+  @user = User.find_by(email: params[:email])
+  if @user && @user.password == params[:password]
+    login(@user)
+    # redirect to('/dashboard')
+    erb :dashboard
   else
     @login_failed = true
     erb :login
