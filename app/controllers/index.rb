@@ -16,7 +16,7 @@ get '/new' do
 end
 
 # Clicked on a post to edit
-get '/post/:id' do
+get '/day/:id' do
   @journal = Journal.find(params[:id])
   erb :edit
 end
@@ -54,9 +54,10 @@ get '/streak' do
       t = journal.created_at
       t = Date.parse(t.to_s).to_s
       array << { 'date' => t, 'goal' => journal.goal.to_s }
+
     end
-    binding.pry
-    return array.to_json
+    # binding.pry
+    # return array.to_json
   end
 
 end

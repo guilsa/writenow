@@ -1,31 +1,55 @@
+## USER CREATION
+
 User.create(first_name: "Gui",
             last_name: "Sa",
             email: "gui@gmail.com",
             password: "foobar")
 
-User.create(first_name: "Maria",
+User.create(first_name: "Elaine",
             last_name: "Sa",
-            email: "maria@gmail.com",
+            email: "elaine@gmail.com",
             password: "foobar")
 
-Journal.create(content: "this is by Gui", user_id: 1)
-Journal.create(content: "this is Gui's second journal", user_id: 1)
-Journal.create(content: "this is Gui's third journal", user_id: 1)
-Journal.create(content: "this is Gui's forth journal", user_id: 1)
-Journal.create(content: "this is Gui's firth journal", user_id: 1)
+## JOURNAL CREATION
 
-Journal.create(content: "this is by Maria", user_id: 2)
-Journal.create(content: "this is Maria's second journal", user_id: 2)
+# t.date :day
+# t.string :content
+# t.string :title
+# t.integer :word_count
+# t.boolean :goal, default: false
+# t.belongs_to :user
+# t.timestamps
+
+Journal.create(day: "2015-05-01",
+               content: FFaker::Lorem.sentence(49),
+               user_id: 1)
+
+Journal.create(day: "2015-05-02",
+               content: FFaker::Lorem.sentence(48),
+               user_id: 1)
+
+Journal.create(day: "2015-05-03",
+               content: FFaker::Lorem.sentence(50),
+               user_id: 1)
+
+Journal.create(day: "2015-05-04",
+               content: FFaker::Lorem.sentence(51),
+               user_id: 1)
 
 
-goal = Journal(1).goal
-goal = true
 
-goal = Journal(2).goal
-goal = true
+# Journal.create(content: "this is by Maria", user_id: 2)
+# Journal.create(content: "this is Maria's second journal", user_id: 2)
 
-goal = Journal(3).goal
-goal = true
 
-goal = Journal(5).goal
-goal = true
+# goal = Journal(1).goal
+# goal = true
+
+# goal = Journal(2).goal
+# goal = true
+
+# goal = Journal(3).goal
+# goal = true
+
+# goal = Journal(5).goal
+# goal = true

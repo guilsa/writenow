@@ -28,7 +28,7 @@ end
 group :test, :development do
   gem 'rspec'
   gem 'factory_girl'
-  gem 'faker'
+  gem 'ffaker', '~> 2.0.0'
   gem 'hirb'
   gem 'pry', '~> 0.10.1'
 end

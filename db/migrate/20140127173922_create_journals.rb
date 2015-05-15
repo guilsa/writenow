@@ -1,13 +1,16 @@
-class CreateJournals < ActiveRecord::Migration
+ class CreateJournals < ActiveRecord::Migration
   def change
     create_table(:journals) do |t|
-      t.string :content
-      t.string :title
+      t.date :day
+      t.text :content
+      t.integer :word_count, default: 0
       t.boolean :goal, default: false
+
+      t.timestamps
 
       t.belongs_to :user
 
-      t.timestamps
+
     end
   end
 end
