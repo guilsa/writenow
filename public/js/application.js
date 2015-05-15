@@ -36,10 +36,9 @@ function getFormattedDate() {
 }
 
 function autoSave(){
-
   window.setInterval(function(){
     saveDocument();
-  }, 10000);
+  }, 30000);
 };
 
 function saveDocument(){

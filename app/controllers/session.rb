@@ -16,7 +16,14 @@ end
 
 get '/login' do
   # render sign-in page
+  @users = User.all
+  @journals = Journal.all
   erb :login
+end
+
+get '/:day' do
+  @journal = Journal.find_by(day: params[:day])
+  erb :edit
 end
 
 post '/login' do

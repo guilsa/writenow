@@ -56,10 +56,7 @@ get '/streak' do
 end
 
 # Clicked on a post to edit
-get '/:day' do
-  @journal = Journal.find_by(day: params[:day])
-  erb :edit
-end
+
 
 
 # A journal cannot be deleted
