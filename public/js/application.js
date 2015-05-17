@@ -39,6 +39,7 @@ function autoSave(){
   window.setInterval(function(){
     saveDocument();
   }, 30000);
+  // every 30 seconds
 };
 
 function saveDocument(){

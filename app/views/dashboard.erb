@@ -3,13 +3,13 @@
 <a href="/new"><input type="button" value="Write now"></a>
 
 <h2>Writing streak:</h2>
-  <h1>Which days you were able to write consecutively. If you miss a day you should see a blank box and if you write for 4 days straight, each day should be marked in green.</h1>
+  <p>Shows which days you were able to write consecutively. If you miss a day you should see a blank box and if you write for 4 days straight, each day should be marked in green.</p>
   <%= erb :'_streak', { layout: false} %>
-<h2>Journals:</h2>
+<!-- <h2>Journals:</h2>
 <ul>
   <% @user.journals.each do |journal| %>
     <li id="journal-index"><a href="/<%= journal.day %>"><%= journal.day %> - <%= journal.goal %></a></li>
   <% end %>
-</ul>
+</ul> -->
 
 </div>

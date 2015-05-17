@@ -6,6 +6,7 @@ get '/' do
 end
 
 get '/dashboard' do
+  @users = User.all
   if current_user
     @user = User.find(current_user.id)
     erb :dashboard

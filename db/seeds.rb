@@ -42,14 +42,19 @@ Journal.create(day: "2015-05-04",
 # Journal.create(content: "this is Maria's second journal", user_id: 2)
 
 
-# goal = Journal(1).goal
-# goal = true
+journal = Journal.find(1)
+journal.goal = true
+journal.save
 
-# goal = Journal(2).goal
-# goal = true
+journal = Journal.find(2)
+journal.goal = false
+journal.save
 
-# goal = Journal(3).goal
-# goal = true
+journal = Journal.find(3)
+journal.goal = true
+journal.save
 
-# goal = Journal(5).goal
-# goal = true
+journal = Journal.find(4)
+journal.goal = false
+journal.save
+
