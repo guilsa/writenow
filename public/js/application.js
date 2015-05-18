@@ -36,69 +36,45 @@ function getFormattedDate() {
 
 function autoSave(){
   window.setInterval(function(){
-    saveDocument();
+    var day = window.location.pathname;
+    var content = $( 'textarea[name="content"]' ).val();
+    var data = {"content": content, "wordcount": $( '#word-count' ).html()};
+    $.ajax({
+      type: "PUT",
+      url: day,
+      data: data,
+      success: function(){
+        $('#auto-save').text("Last autosave: " + getFormattedDate());
+    }
+  });
   }, 30000);
   // every 30 seconds
 };
 
-function saveDocument(){
-  var day = window.location.pathname;
-  var content = $( 'textarea[name="content"]' ).val();
-  var data = {"content": content, "wordcount": $( '#word-count' ).html()};
-  $.ajax({
-    type: "PUT",
-    url: day,
-    data: data,
-    success: function(){
-      $('#auto-save').text("Last autosave: " + getFormattedDate());
-    }
-  });
-};
-
-// function getMonthGoals(){
-
-//   $.ajax({
-//     type: "GET",
-//     url: "/getgoals",
-//     success: function(response){
-//       // debugger
-//       return response;
-//     }
-//   });
-//   debugger
-// };
-
 function renderStreaks(){
   var d = new Date();
   var totalDays = numberOfDays(d.getFullYear(), d.getMonth());
-  // var objs = getMonthGoals();
-  // debugger
   $.ajax({
     type: "GET",
     url: "/getgoals",
     success: function(response){
-      var objs = response;
-      var glyphiconHTML = '<span class="glyphicon glyphicon-ok"></span>';
+      var glyphiconHTML = '<div class="streak"><span class="glyphicon glyphicon-ok"></span></div>';
+      var noGlyphiconHTML = '<div class="streak"></div>';
       for (var i = 0; i < totalDays; i++) {
-        i == 15 && $( '.streak-box' ).append("<br>")
-        if (objs[i]) {
-          // debugger
-          if (objs[i].goal === "true") {
-            // debugger
-            $( '.streak-box' ).append( $( '<div class="streak"><span class="glyphicon glyphicon-ok"></span></div>' ).attr( 'id', 'day-' + (i + 1)) );
+        i == 15 && $( '.streak-box' ).append("<br>");
+        if (response[i]) {
+          if (response[i].goal === "true") {
+            $( '.streak-box' ).append( $( glyphiconHTML ).attr( 'id', 'day-' + (i + 1)) );
           } else {
-            $( '.streak-box' ).append( $( '<div class="streak"></div>' ).attr( 'id', 'day-' + (i + 1)) );
+            $( '.streak-box' ).append( $( noGlyphiconHTML ).attr( 'id', 'day-' + (i + 1)) );
           }
         } else {
-          $( '.streak-box' ).append( $( '<div class="streak"></div>' ).attr( 'id', 'day-' + (i + 1)) );
+          $( '.streak-box' ).append( $( noGlyphiconHTML ).attr( 'id', 'day-' + (i + 1)) );
         }
-        // Box should have a glyphicon if that day goal is set to true
       };
     }
   });
 }
-
-
 
 function wordCount(value) {
   // Source: http://jsfiddle.net/deepumohanp/jZeKu/
