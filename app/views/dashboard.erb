@@ -5,11 +5,11 @@
 <p>Shows which days you were able to write consecutively. If you miss a day you should see a blank box and if you write for 4 days straight, each day should be marked in green.</p>
 <%= erb :'_streak', { layout: false} %>
 
-<a href="/new"><button type="button" class="btn btn-default btn-lg">Write now</button></a>
+<a href="/<%=Time.now.strftime("%Y-%m-%d")%>"><button type="button" class="btn btn-default btn-lg">Write now</button></a>
 <h2>Journals:</h2>
 <ul>
   <% @user.journals.each do |journal| %>
-    <li id="journal-index"><a href="/<%= journal.day %>"><%= journal.day %> - <%= journal.goal %></a></li>
+    <li id="journal-index"><a href="/<%= journal.day %>"><%= journal.title %> - <%= journal.goal %></a></li>
   <% end %>
 </ul>
 

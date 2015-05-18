@@ -22,19 +22,24 @@ User.create(first_name: "Elaine",
 
 Journal.create(day: "2015-05-01",
                content: FFaker::Lorem.sentence(49),
-               user_id: 1)
+               user_id: 1,
+               title: "Monday, May 1, 2015")
 
 Journal.create(day: "2015-05-02",
                content: FFaker::Lorem.sentence(48),
-               user_id: 1)
+               user_id: 1,
+               title: "Tuesday, May 2, 2015"
+               )
 
 Journal.create(day: "2015-05-03",
                content: FFaker::Lorem.sentence(50),
-               user_id: 1)
+               user_id: 1,
+               title: "Wednesday, May 3, 2015")
 
 Journal.create(day: "2015-05-04",
                content: FFaker::Lorem.sentence(51),
-               user_id: 1)
+               user_id: 1,
+               title: "Thursday, May 4, 2015")
 
 
 

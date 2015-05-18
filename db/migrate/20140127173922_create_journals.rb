@@ -3,6 +3,7 @@ class CreateJournals < ActiveRecord::Migration
     create_table(:journals) do |t|
       t.text :content
       t.date :day
+      t.string :title
       t.integer :word_count, default: 0
       t.boolean :goal, default: false
 

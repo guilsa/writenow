@@ -39,8 +39,8 @@ post '/login' do
   end
 end
 
-delete '/logout' do
-  # sign-out -- invoked
-  logout!
-  redirect '/login'
-end
+# delete '/logout' do
+#   # sign-out -- invoked
+#   logout!
+#   redirect '/login'
+# end

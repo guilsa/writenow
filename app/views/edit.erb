@@ -1,11 +1,12 @@
 <div class="container">
 <div class="error"></div>
-<form action="/:id" method="post">
-  <input type="hidden" name="id" value="<%=@journal.day%>">
-  <input type="hidden" name="_method" value="put">
+<form action="/<%=Time.now.strftime("%Y-%m-%d")%>" method="post">
+  <input type="hidden" name="day" value="<%=@journal.day if @journal%>">
+  <input type="hidden" name="title" value="<%= Date.today.strftime("%A, %B %-d, %Y")%>">
+  <input type="hidden" name="_method" value="<%= @journal ? "put" : "post" %>">
   <input type="submit" value="Save">
   <div class="timestamp">Tuesday, May 12, 2015</div>
-  <textarea autofocus class="content" name="content" rows="30" cols="100"><%=@journal.content%></textarea>
+  <textarea autofocus class="content" name="content" rows="30" cols="100"><%=@journal.content if @journal%></textarea>
 </form>
 
   <div id="result">

@@ -41,7 +41,8 @@ function autoSave(){
   window.setInterval(function(){
     var day = window.location.pathname;
     var content = $( 'textarea[name="content"]' ).val();
-    var data = {"content": content, "wordcount": $( '#word-count' ).html()};
+    var title = $( ".timestamp" ).html();
+    var data = {"content": content, "title": title, "wordcount": $( '#word-count' ).html()};
     $.ajax({
       type: "PUT",
       url: day,
