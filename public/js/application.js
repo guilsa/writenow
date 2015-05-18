@@ -6,7 +6,6 @@ function eventBindings(){
       // Run renderStreaks if element id .streak loads
       if ($( '.streak-box' ).length) {
         renderStreaks();
-        renderStreaksMarks();
       };
 
       if ($( '.timestamp' ).length) {
@@ -56,26 +55,50 @@ function saveDocument(){
   });
 };
 
+// function getMonthGoals(){
+
+//   $.ajax({
+//     type: "GET",
+//     url: "/getgoals",
+//     success: function(response){
+//       // debugger
+//       return response;
+//     }
+//   });
+//   debugger
+// };
+
 function renderStreaks(){
   var d = new Date();
   var totalDays = numberOfDays(d.getFullYear(), d.getMonth());
-  var glyphiconHTML = '<span class="glyphicon glyphicon-ok"></span>';
-  for (var i = 1; i < totalDays; i++) {
-    $( '.streak-box' ).append( $( '<div class="streak"></div>' ).attr( 'id', 'day-' + i) );
-    // Box should have a glyphicon if that day goal is set to true
-  };
-}
-
-function renderStreaksMarks(){
+  // var objs = getMonthGoals();
+  // debugger
   $.ajax({
     type: "GET",
-    url: "/streak",
-    success: function(data){
-      debugger;
-      // buildTodoElement(data);
+    url: "/getgoals",
+    success: function(response){
+      var objs = response;
+      var glyphiconHTML = '<span class="glyphicon glyphicon-ok"></span>';
+      for (var i = 0; i < totalDays; i++) {
+        i == 15 && $( '.streak-box' ).append("<br>")
+        if (objs[i]) {
+          // debugger
+          if (objs[i].goal === "true") {
+            // debugger
+            $( '.streak-box' ).append( $( '<div class="streak"><span class="glyphicon glyphicon-ok"></span></div>' ).attr( 'id', 'day-' + (i + 1)) );
+          } else {
+            $( '.streak-box' ).append( $( '<div class="streak"></div>' ).attr( 'id', 'day-' + (i + 1)) );
+          }
+        } else {
+          $( '.streak-box' ).append( $( '<div class="streak"></div>' ).attr( 'id', 'day-' + (i + 1)) );
+        }
+        // Box should have a glyphicon if that day goal is set to true
+      };
     }
   });
-};
+}
+
+
 
 function wordCount(value) {
   // Source: http://jsfiddle.net/deepumohanp/jZeKu/
@@ -94,7 +117,7 @@ function wordCount(value) {
 };
 
 function numberOfDays(year, month){
-    var d = new Date(year, month, 0);
+    var d = new Date(year, month + 1, 0);
     return d.getDate();
 };
 
