@@ -1,6 +1,6 @@
 <div class="container">
 <div class="error"></div>
-<form action="/edit" method="post">
+<form action="/:id" method="post">
   <input type="hidden" name="id" value="<%=@journal.day%>">
   <input type="hidden" name="_method" value="put">
   <input type="submit" value="Save">
