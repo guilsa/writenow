@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { addSeconds, subSeconds, format } = require('date-fns')
+const { addSeconds, subSeconds, addDays, format } = require('date-fns')
 const db = require('../db/index.js')
 
 const insertUserStatement = db.prepare(`
@@ -16,21 +16,26 @@ const insertJournalStatement = db.prepare(`
 function createJournals(db) {
   const total = 15
   let createdAt = subSeconds(new Date(), total)
+  let day = 1
+  let dateId = normalizeDay(day)
 
   for (let i = 0; i < total; i++) {
-    createJournal(createdAt)
+    createJournal(createdAt, dateId, i)
     createdAt = addSeconds(createdAt, 1)
+    day += 1
+    dateId = normalizeDay(day)
   }
 }
 
-function createJournal({ createdAt }) {
+function createJournal(createdAt, dateId, i) {
+  const completed = i % 2 === 0 ? 0 : 1
   const content = new Array(10).join("It's time to write a little bit. Oh, words. ")
   insertJournalStatement.run({
     userId: 1,
     content,
     wordCount: 100,
-    completed: 0,
-    dateId: '2022-03-21',
+    completed,
+    dateId,
     startTime: normalizeDatetime(createdAt),
     completedTime: normalizeDatetime(createdAt),
     createdAt: normalizeDatetime(createdAt),
@@ -47,6 +52,10 @@ function createUsers() {
 
 function normalizeDatetime(date) {
   return format(new Date(), 'yyyy-mm-dd hh:mm:ss')
+}
+
+function normalizeDay(day) {
+  return format(new Date(2022, 2, day), 'yyyy-MM-dd')
 }
 
 createUsers()
