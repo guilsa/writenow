@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+const { addSeconds, subSeconds, format } = require('date-fns')
+const db = require('../db/index.js')
+
+const insertUserStatement = db.prepare(`
+  INSERT OR IGNORE INTO users(id, name, email)
+  VALUES (@id, @name, @email)
+`)
+
+const insertJournalStatement = db.prepare(`
+  INSERT INTO journals(userId, content, wordCount, completed, dateId, startTime, completedTime)
+  VALUES (@userId, @content, @wordCount, @completed, @dateId, @startTime, @completedTime)
+`)
+
+function createJournals(db) {
+  const total = 15
+  let createdAt = subSeconds(new Date(), total)
+
+  for (let i = 0; i < total; i++) {
+    createJournal(createdAt)
+    createdAt = addSeconds(createdAt, 1)
+  }
+}
+
+function createJournal({ createdAt }) {
+  const content = new Array(10).join("It's time to write a little bit. Oh, words. ")
+  insertJournalStatement.run({
+    userId: 1,
+    content,
+    wordCount: 100,
+    completed: 0,
+    dateId: '2022-03-21',
+    startTime: normalizeDatetime(createdAt),
+    completedTime: normalizeDatetime(createdAt),
+    createdAt: normalizeDatetime(createdAt),
+  })
+}
+
+function createUsers() {
+  insertUserStatement.run({
+    id: 1,
+    name: 'Bob Marley',
+    email: 'bob@the_wailers.net',
+  })
+}
+
+function normalizeDatetime(date) {
+  return format(new Date(), 'yyyy-mm-dd hh:mm:ss')
+}
+
+createUsers()
+createJournals()
+db.close()

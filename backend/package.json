@@ -11,6 +11,8 @@
   "author": "Guilherme Sa",
   "license": "MIT",
   "dependencies": {
+    "better-sqlite3": "^7.5.0",
+    "date-fns": "^2.28.0",
     "express": "^4.17.3"
   },
   "devDependencies": {
