@@ -1,4 +1,7 @@
 const Database = require('better-sqlite3')
-const db = new Database('db/writenow.sqlite3', { verbose: console.log })
+
+let databaseName = 'writenow.sqlite3'
+
+const db = new Database(`./db/${databaseName}`)
 
 module.exports = db

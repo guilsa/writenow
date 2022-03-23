@@ -8,7 +8,7 @@ db.exec(`CREATE TABLE IF NOT EXISTS journals (
   content TEXT NOT NULL,
   wordCount INTEGER NOT NULL,
   completed INTEGER NOT NULL default 0,
-  dateId VARCHAR(255) NOT NULL,
+  dateId VARCHAR(255) NOT NULL UNIQUE,
   startTime DATETIME,
   completedTime DATETIME,
   createdAt DATETIME DEFAULT (datetime('now','localtime')),

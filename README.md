@@ -17,3 +17,8 @@ For local development, from root, run `npm i` once, then `npm run dev` to start 
 ### Endpoint testing
 
 - From backend directory, run `npm run test`.
+
+# Challenges
+
+- Populate database before test
+  - Using/not using fixtures since you will need to maintain it each time changes are made to your models. (https://stackoverflow.com/a/43718623/348282)
